@@ -31,8 +31,14 @@ public class collision : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D enemyCrash)
     {
-        enemyCrash.gameObject.CompareTag("Enemy");
+        if (enemyCrash.gameObject.CompareTag("Enemy") && !died)
+        {
+            died = true;
+            gameOver.GameOver();
 
-        //Debug.Log("dead");
+            Destroy(gameObject);
+        }
+
+
     }
 }
